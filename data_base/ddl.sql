@@ -11,7 +11,7 @@ phone INT(20),
 address VARCHAR(100), 
 email VARCHAR(50) UNIQUE NOT NULL, 
 photo VARCHAR(50), 
-password VARCHAR(50) NOT NULL,
+password VARCHAR(32) NOT NULL,
 user_type VARCHAR(14) NOT NULL CHECK (user_type IN ('admin', 'member')),
 PRIMARY KEY (id)
 );
