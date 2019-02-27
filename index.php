@@ -1,14 +1,15 @@
 <?php
 session_start();
 
-require_once("includes/libs/Smarty.class.php");
+require_once ("./controllers/user.php");
+require_once ("./controllers/utils.php");
 
-$miSmarty = new Smarty();
-
-$miSmarty->template_dir = "templates";
-$miSmarty->compile_dir = "templates_c";
-
-
-$miSmarty->display("index.tpl");
+$miSmarty = createSmartyTemplate();
+if (getLoggedUser()){
+    $miSmarty->display("./templates/home.tpl");
+}else{
+    $miSmarty->assign("message",$_SESSION["message"]);
+    $miSmarty->display('./templates/login.tpl');
+}
 
 ?>
