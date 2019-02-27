@@ -13,7 +13,7 @@ if (!empty($post_user) && !empty($post_pwd)){
     error_log(print_r("doLogin user:", TRUE));
     error_log(print_r($user, TRUE));
     if ($user != NULL) {
-        header("location:./index.php");
+        header("location:./home.php");
     }else{
         header("location:./login.php");
     }
