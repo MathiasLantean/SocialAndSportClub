@@ -1,10 +1,10 @@
 <?php
 session_start();
 
+require_once("includes/libs/Smarty.class.php");
 require_once ("./controllers/utils.php");
 
 $miSmarty = createSmartyTemplate();
-$miSmarty->assign("message",$_SESSION["message"]);
-$miSmarty->display('./templates/login.tpl');
+$miSmarty->display("home.tpl");
 
 ?>
