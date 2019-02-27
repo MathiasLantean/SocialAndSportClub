@@ -15,7 +15,7 @@ if (!empty($post_user) && !empty($post_pwd)){
     if ($user != NULL) {
         header("location:./home.php");
     }else{
-        header("location:./login.php");
+        header("location:./index.php");
     }
 }else{
     error_log(print_r("DATOS VACIOS", TRUE));

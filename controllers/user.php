@@ -69,7 +69,7 @@ function login($user, $pwd, $remember) {
 function remembered() {
     if (isset($_COOKIE["remembered"])) {
         $logged = getUserByToken($_COOKIE["remembered"]);
-        unset($dbUser['password']);
+        unset($logged['password']);
         return $logged;
     }
     return null;
@@ -79,12 +79,11 @@ function getLoggedUser() {
     if (isset($_SESSION["user"])) {
         return $_SESSION["user"];
     }
-
     return remembered();
 }
 
-
 function logout() {
+    //TODO: REMOVE TOKEN FROM DB
     session_start();
     setcookie('remembered', null, -1);
     session_destroy();
