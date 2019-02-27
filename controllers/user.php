@@ -44,6 +44,20 @@ function setToken($email, $token) {
     return FALSE;
 }
 
+function removeToken($token) {
+    $sql = "UPDATE user SET token = null WHERE token = :token";
+    $params = array();
+    $params[0] = array("token", $token, "string");
+    $conn = getConnection();
+    
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 function login($user, $pwd, $remember) {
     session_start();
     $dbUser = getUser($user);
@@ -56,6 +70,8 @@ function login($user, $pwd, $remember) {
             $token = uniqid();
             setToken($user, $token);
             setcookie("remembered", $token, time() + (60 * 60 * 12));
+        }else{
+            setToken($user, null);
         }
         $_SESSION["user"] = $dbUser;
         $_SESSION["message"] = "";
@@ -83,8 +99,10 @@ function getLoggedUser() {
 }
 
 function logout() {
-    //TODO: REMOVE TOKEN FROM DB
     session_start();
+    if (isset($_COOKIE["remembered"])) {
+        removeToken($_COOKIE["remembered"]);
+    }
     setcookie('remembered', null, -1);
     session_destroy();
 }
