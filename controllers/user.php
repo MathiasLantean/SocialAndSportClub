@@ -67,15 +67,11 @@ function login($user, $pwd, $remember) {
 }
 
 function remembered() {
-    // TODO: USE THE GUID IN THE DATABASE TO IDENTIFY THE USER
     if (isset($_COOKIE["remembered"])) {
-
         $logged = getUserByToken($_COOKIE["remembered"]);
         unset($dbUser['password']);
-
         return $logged;
     }
-
     return null;
 }
 
@@ -89,6 +85,7 @@ function getLoggedUser() {
 
 
 function logout() {
+    session_start();
     setcookie('remembered', null, -1);
     session_destroy();
 }
