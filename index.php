@@ -8,7 +8,6 @@ $miSmarty = createSmartyTemplate();
 if (getLoggedUser()){
     $miSmarty->display("./templates/home.tpl");
 }else{
-    $miSmarty->assign("message",$_SESSION["message"]);
     $miSmarty->display('./templates/login.tpl');
 }
 
