@@ -107,4 +107,20 @@ function logout() {
     session_destroy();
 }
 
+function changePassword($user_id, $pwd) {
+    $upperMd5Pwd = strtoupper(md5($pwd));
+    $sql = "UPDATE user SET password = :password WHERE id = :userid";
+    $params = array();
+    $params[0] = array("password", $upperMd5Pwd, "string");
+    $params[1] = array("userid", $user_id, "string");
+    $conn = getConnection();
+    
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 ?>
