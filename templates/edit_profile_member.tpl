@@ -45,7 +45,27 @@
               <div class="card-body">
                  <div class="text-white-80 small text-center" id="error-text"></div>
               </div>
-          </div>   
+          </div>
+          
+          {if isset($smarty.session["status"]) and $smarty.session["status"] == True}
+            <div class="card bg-success text-white shadow" id="success-card">
+                <div class="card-body">
+                   <div class="text-white-80 small text-center" id="success-text">
+                       {$smarty.session["message"]}
+                   </div>
+                </div>
+            </div>   
+          {/if}
+          {if isset($smarty.session["status"]) and $smarty.session["status"] == False}
+            <div class="card bg-danger text-white shadow" id="error-card-server">
+              <div class="card-body">
+                  <div class="text-white-80 small text-center" id="error-text-server">
+                      {$smarty.session["message"]}
+                  </div>
+                </div>
+            </div>
+          {/if}
+          
           <input type="submit" class="btn btn-primary btn-user btn-block" value="Save">
         </form>
       </div>
