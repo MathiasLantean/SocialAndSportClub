@@ -1,6 +1,6 @@
 <!-- Nav Item - My Activities -->
 <li class="nav-item active">
-  <a class="nav-link" href="index.php">
+  <a class="nav-link" href="myActivity.php">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>My Activities</span></a>
 </li>
