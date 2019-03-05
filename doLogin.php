@@ -19,7 +19,7 @@ if (!empty($post_user) && !empty($post_pwd)){
     }
 }else{
     error_log(print_r("DATOS VACIOS", TRUE));
-    header("location:./login.php");
+    header("location:./index.php");
 }
 
 ?>

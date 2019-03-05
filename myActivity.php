@@ -1,14 +1,10 @@
 <?php
 session_start();
-require_once("./includes/libs/Smarty.class.php");
 require_once ("./controllers/utils.php");
 require_once ("./controllers/user.php");
 require_once ("./controllers/activity.php");
 
-$miSmarty = new Smarty();
-$miSmarty->template_dir = 'templates';
-$miSmarty->compile_dir = 'templates_c';
-$miSmarty->cache_dir = 'cache';
+$miSmarty = createSmartyTemplate();
 $usr = getLoggedUser();
 if (isset($usr)){
     $myActivities = getCurrentActivities($usr["id"]);
