@@ -58,6 +58,12 @@ function removeToken($token) {
     return FALSE;
 }
 
+function isCorrectPassword($user, $pwd_to_check){
+    $dbUser = getUser($user);
+    $upperMd5Pwd = strtoupper(md5($pwd_to_check));
+    return $dbUser && ($dbUser['password'] == $upperMd5Pwd);
+}
+
 function login($user, $pwd, $remember) {
     session_start();
     $dbUser = getUser($user);

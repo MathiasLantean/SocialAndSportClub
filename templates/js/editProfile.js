@@ -8,6 +8,7 @@ $(document).ready(function(){
         var confirmPwdToCheck = $.trim($("#InputRepeatPassword").val());
         var pwdCheck = checkPassword(pwdToCheck, confirmPwdToCheck);
         if (!pwdCheck.valid){
+            $(".msg-server").remove();
             $("#error-card").show();
             $("#error-text").text(pwdCheck.message);
         }
@@ -19,6 +20,7 @@ $(document).ready(function(){
             var pwdToCheck = $.trim($("#InputPassword").val());
             var pwdCheck = checkPassword(pwdToCheck, confirmPwdToCheck);
             if (!pwdCheck.valid){
+                $(".msg-server").remove();
                 $("#error-card").show();
                 $("#error-text").text(pwdCheck.message);
             }
@@ -30,6 +32,7 @@ $(document).ready(function(){
         var confirmPwdToCheck = $.trim($("#InputRepeatPassword").val());
         var pwdCheck = checkPassword(pwdToCheck, confirmPwdToCheck);
         if (!pwdCheck.valid){
+            $(".msg-server").remove();
             $("#error-card").show();
             $("#error-text").text(pwdCheck.message);
             return false;

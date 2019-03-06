@@ -33,9 +33,12 @@
           </div>  
           <hr>  
           <div class="text-xs font-weight-bold text-primary text-uppercase text-center mb-1">Change Password</div>  
+          <div class="form-group">
+            <input type="password" class="form-control form-control-user" id="currentPassword" name="currentPwd" placeholder="Current Password">
+          </div>    
           <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
-              <input type="password" class="form-control form-control-user" id="InputPassword" name="pwd" placeholder="Password">
+              <input type="password" class="form-control form-control-user" id="InputPassword" name="pwd" placeholder="New Password">
             </div>
             <div class="col-sm-6">
                 <input type="password" class="form-control form-control-user" id="InputRepeatPassword" name="confirmPwd" placeholder="Repeat Password">
@@ -48,7 +51,7 @@
           </div>
           
           {if isset($smarty.session["status"]) and $smarty.session["status"] == True}
-            <div class="card bg-success text-white shadow" id="success-card">
+            <div class="card bg-success text-white shadow msg-server" id="success-card">
                 <div class="card-body">
                    <div class="text-white-80 small text-center" id="success-text">
                        {$smarty.session["message"]}
@@ -57,7 +60,7 @@
             </div>   
           {/if}
           {if isset($smarty.session["status"]) and $smarty.session["status"] == False}
-            <div class="card bg-danger text-white shadow" id="error-card-server">
+            <div class="card bg-danger text-white shadow msg-server" id="error-card-server">
               <div class="card-body">
                   <div class="text-white-80 small text-center" id="error-text-server">
                       {$smarty.session["message"]}
