@@ -48,4 +48,22 @@ function leaveActivity($user_id, $activity_id){
     return False;
 }
 
+function enrollActivity($user_id, $activity_id){
+    $sql = "INSERT INTO enroll (user, activity) VALUES (:user, :activity)";
+    $params = array();
+    $params[0] = array("user", $user_id, "int");
+    $params[1] = array("activity", $activity_id, "int");
+    $conn = getConnection();
+    
+    error_log(print_r( $sql, TRUE));
+    error_log(print_r( $params[0], TRUE));
+    error_log(print_r( $params[1], TRUE));
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return True;
+        }
+    }
+    return False;
+}
+
 ?>

@@ -8,11 +8,9 @@ require_once ("./controllers/activity.php");
 $usr = getLoggedUser();
 $activityId = (int)$_POST["activityId"];
 
-error_log(print_r($activityId, TRUE));
-
 if (isset($usr) && isset($activityId)){
-    if (leaveActivity((int)$usr["id"], $activityId)){
-        header("location: ./myActivities.php");
+    if (enrollActivity((int)$usr["id"], $activityId)){
+        header("location: ./myAvailableActivities.php");
     }else{
         header("location: ./error404.php");
     }
