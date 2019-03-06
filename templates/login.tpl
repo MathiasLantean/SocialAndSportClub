@@ -9,7 +9,7 @@
   <meta name="description" content="ORT University projet">
   <meta name="author" content="Mathias Lantean">
 
-  <title>SB Admin 2 - Login</title>
+  <title>Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="templates/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,17 +39,29 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Social and Sport Club</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" method="POST" action="doLogin.php">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" id="user" name="user" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" id="pwd" name="pwd" placeholder="Password">
                     </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                       <input value='0' name='remember' hidden> 
+                       <input type="checkbox" class="custom-control-input" id="remember" value="1" name="remember">
+                       <label class="custom-control-label" for="remember">Remember Me</label> 
+                      </div>
+                    </div>
+                    {if isset($smarty.session["message"]) and not empty($smarty.session["message"])}
+                    <div class="card bg-danger text-white shadow">
+                        <div class="card-body">
+                           <div class="text-white-80 small text-center">{$smarty.session["message"]}</div>
+                        </div>
+                    </div>      
+                    {/if}
                     <hr>  
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    <input class="btn btn-primary btn-user btn-block" type="submit" value="Login"/>
                   </form>
                   <hr>
                   <div class="text-center">

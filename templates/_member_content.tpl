@@ -1,7 +1,3 @@
-{extends file='_base.tpl'}
-
-{block name=content}
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -285,5 +281,3 @@
 
 </div>
 <!-- /.container-fluid -->
-
-{/block}
