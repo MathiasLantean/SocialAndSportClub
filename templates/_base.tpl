@@ -43,7 +43,7 @@
       <hr class="sidebar-divider my-0">
 
     {if $smarty.session["user"]["user_type"] eq "admin"}
-{*      {include file="_admin_options.tpl"}*}
+        {include file="_admin_options.tpl"}
     {else}
         {include file="_member_options.tpl"}
     {/if}
