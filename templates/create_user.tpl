@@ -49,6 +49,7 @@
             </div>
           </div>
           <div class="form-group">
+              <label for="InputPhoto">Profile picture </label>
               <input type="file" name="photo" id="InputPhoto" accept=".png, .jpg"/>
           </div>   
           <div class="card bg-danger text-white shadow" id="error-card"  style="display: none">
