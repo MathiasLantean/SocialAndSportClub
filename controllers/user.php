@@ -1,6 +1,30 @@
 <?php
 require_once("utils.php");
 
+function createUser($name, $surname, $email, $pwd, $phone, $dob, $address, $photo, $type){
+    $sql = "INSERT INTO user (name, surname, DOB, phone, address, email, photo, password, user_type)";
+    $sql .= " VALUES (:nom, :sur, :dob, :pho, :add, :email, :photo, :pwd, :type)";
+    $params = array();
+    $params[0] = array("nom", $name, "string");
+    $params[1] = array("sur", $surname, "string");
+    $params[2] = array("dob", $dob, "string");
+    $params[3] = array("pho", $phone, "string");
+    $params[4] = array("add", $address, "string");
+    $params[5] = array("email", $email, "string");
+    $params[6] = array("photo", $photo, "string");
+    $params[7] = array("pwd", $pwd, "string");
+    $params[8] = array("type", $type, "string");
+    
+    $conn = getConnection();
+    
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return True;
+        }
+    }
+    return False;
+}
+
 function getUser($email) {
     $sql = "SELECT * FROM user WHERE email = :email";
     $params = array();

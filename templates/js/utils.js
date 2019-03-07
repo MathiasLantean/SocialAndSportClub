@@ -15,3 +15,12 @@ function checkPassword(pwd, confirmPwd){
     return {valid: false, message: message};
 }
 
+function validateForm(formId) {
+  var isValid = true;
+  $('#'+formId+' .form-control').each(function() {
+    if ( $(this).val() === '' )
+        isValid = false;
+  });
+  return isValid;
+}
+
