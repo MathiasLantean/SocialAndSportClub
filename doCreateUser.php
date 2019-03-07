@@ -15,15 +15,7 @@ $phone = trim($_POST["phone"]);
 $dob = trim($_POST["dob"]);
 $address = trim($_POST["address"]);
 $isAdmin = (int)($_POST["isAdmin"]);
-$photo = "";
-
-
-error_log(print_r($name, TRUE));
-error_log(print_r($surname, TRUE));
-error_log(print_r($email, TRUE));
-error_log(print_r($phone, TRUE));
-error_log(print_r($dob, TRUE));
-error_log(print_r($address, TRUE));
+$photo = isset($_FILES["photo"]) ? $_FILES["photo"] : Null;
 
 
 if (isset($usr) && $usr["user_type"] == "admin"){
@@ -40,11 +32,12 @@ if (isset($usr) && $usr["user_type"] == "admin"){
                 if ($isAdmin == 1){
                     $type = ADMIN_TYPE;
                 }
+                $photoName = savePhoto($photo);
                 $upperMd5Pwd = strtoupper(md5($pwd));
                 $name = ucfirst($name);
                 $surname = ucfirst($surname);
                 $email = strtolower($email);
-                $wasCreated = createUser($name, $surname, $email, $upperMd5Pwd, $phone, $dob, $address, $photo, $type);
+                $wasCreated = createUser($name, $surname, $email, $upperMd5Pwd, $phone, $dob, $address, $photoName, $type);
                 if($wasCreated){
                     $_SESSION["message"] = "The user has been created.";
                     $_SESSION["status"] = True;

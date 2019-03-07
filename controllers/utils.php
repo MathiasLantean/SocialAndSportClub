@@ -2,6 +2,7 @@
 require_once("./includes/libs/Smarty.class.php");
 require_once("./includes/class.Conexion.BD.php");
 require_once("./settings/config.php");
+require_once("./settings/constants.php");
 
 function getConnection() {
     
@@ -20,6 +21,16 @@ function createSmartyTemplate() {
     $miSmarty->compile_dir = 'templates_c';
     $miSmarty->cache_dir = 'cache';
     return $miSmarty;
+}
+
+function savePhoto($photo){
+    if($photo && is_uploaded_file($photo["tmp_name"])){
+        $foto = date("YmdHis") . "_" . $photo["name"];
+        if(move_uploaded_file($photo["tmp_name"], STATIC_DIR . "uploaded/" . $foto)){
+           return STATIC_DIR.$foto; 
+        }
+    }
+    return STATIC_DIR . "default.jpeg";
 }
 
 ?>

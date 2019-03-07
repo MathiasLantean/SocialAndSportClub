@@ -8,7 +8,7 @@
         <div class="text-center">
           <h1 class="h4 text-gray-900 mb-4">Create User</h1>
         </div>
-        <form id="formCreateUser" class="user" method="POST" action="doCreateUser.php">
+        <form id="formCreateUser" class="user" method="POST" action="doCreateUser.php" enctype="multipart/form-data">
           <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="text" class="form-control form-control-user" id="InputFirstName" name="name" placeholder="First Name">
@@ -53,7 +53,9 @@
                  <div class="text-white-80 small text-center" id="error-text"></div>
               </div>
           </div>
-          
+          <div class="form-group">
+              <input type="file" name="photo" id="InputPhoto" accept=".png, .jpg"/>
+          </div>   
           {if isset($smarty.session["status"]) and $smarty.session["status"] == True}
             <div class="card bg-success text-white shadow msg-server" id="success-card">
                 <div class="card-body">
