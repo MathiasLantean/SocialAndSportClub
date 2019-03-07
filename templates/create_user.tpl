@@ -48,14 +48,14 @@
                 <input type="password" class="form-control form-control-user" id="InputRepeatPassword" name="confirmPwd" placeholder="Repeat Password">
             </div>
           </div>
+          <div class="form-group">
+              <input type="file" name="photo" id="InputPhoto" accept=".png, .jpg"/>
+          </div>   
           <div class="card bg-danger text-white shadow" id="error-card"  style="display: none">
               <div class="card-body">
                  <div class="text-white-80 small text-center" id="error-text"></div>
               </div>
           </div>
-          <div class="form-group">
-              <input type="file" name="photo" id="InputPhoto" accept=".png, .jpg"/>
-          </div>   
           {if isset($smarty.session["status"]) and $smarty.session["status"] == True}
             <div class="card bg-success text-white shadow msg-server" id="success-card">
                 <div class="card-body">
