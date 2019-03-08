@@ -25,6 +25,31 @@ function createUser($name, $surname, $email, $pwd, $phone, $dob, $address, $phot
     return False;
 }
 
+function updateUser($userId, $data){
+        if(!empty($data)){
+            $list = array();
+            $params = array();
+            $i = 0;
+            foreach($data as $k => $v){
+                $list[] = $k ." = :". $k;
+                $params[$i] = array($k, $v, "string");
+                $i++;
+            }
+            $params[$i] = array('id', $userId, "int");
+
+            $list = implode(",", $list);
+            $sql = "UPDATE user SET " . $list . " WHERE id = :id";
+            $conn = getConnection();
+            if ($conn){
+                if($conn->consulta($sql, $params)){
+                    return True;
+                }
+            }
+            return False;
+        }
+        return True;
+}
+
 function getUser($email) {
     $sql = "SELECT * FROM user WHERE email = :email";
     $params = array();
@@ -122,6 +147,7 @@ function remembered() {
 }
 
 function getLoggedUser() {
+    session_start();
     if (isset($_SESSION["user"])) {
         return $_SESSION["user"];
     }

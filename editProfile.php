@@ -13,5 +13,6 @@ if (isset($usr) && $usr["user_type"] == "admin"){
     $miSmarty->display("edit_profile_member.tpl");
 }
 unset($_SESSION["status"]);
+unset($_SESSION["status_update"]);
 unset($_SESSION["message"]);
 ?>

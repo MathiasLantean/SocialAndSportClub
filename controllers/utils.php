@@ -26,8 +26,8 @@ function createSmartyTemplate() {
 function savePhoto($photo){
     if($photo && is_uploaded_file($photo["tmp_name"])){
         $foto = date("YmdHis") . "_" . $photo["name"];
-        if(move_uploaded_file($photo["tmp_name"], STATIC_DIR . "uploaded/" . $foto)){
-           return STATIC_DIR.$foto; 
+        if(move_uploaded_file($photo["tmp_name"], UPLOAD_DIR . $foto)){
+           return UPLOAD_DIR.$foto; 
         }
     }
     return STATIC_DIR . "default.jpeg";
