@@ -40,5 +40,5 @@
 {block name=javascript}
   <script src="templates/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="templates/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-   <script src="templates/js/listMembers.js"></script>
+  <script src="templates/js/listMembers.js"></script>
 {/block}
