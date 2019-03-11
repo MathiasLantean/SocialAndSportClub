@@ -53,10 +53,10 @@
                        <label class="custom-control-label" for="remember">Remember Me</label> 
                       </div>
                     </div>
-                    {if not empty($message)}
+                    {if isset($smarty.session["message"]) and not empty($smarty.session["message"])}
                     <div class="card bg-danger text-white shadow">
                         <div class="card-body">
-                           <div class="text-white-80 small text-center">{$message}</div>
+                           <div class="text-white-80 small text-center">{$smarty.session["message"]}</div>
                         </div>
                     </div>      
                     {/if}

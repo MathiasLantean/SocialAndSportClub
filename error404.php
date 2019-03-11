@@ -6,7 +6,7 @@ require_once ("./controllers/utils.php");
 
 $miSmarty = createSmartyTemplate();
 if (getLoggedUser()){
-    $miSmarty->display("./templates/home.tpl");
+    $miSmarty->display("./templates/error404.tpl");
 }else{
     $miSmarty->display('./templates/login.tpl');
 }
