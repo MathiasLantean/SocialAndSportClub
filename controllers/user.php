@@ -1,5 +1,6 @@
 <?php
 require_once("utils.php");
+require_once("./settings/constants.php");
 
 function createUser($name, $surname, $email, $pwd, $phone, $dob, $address, $photo, $type){
     $sql = "INSERT INTO user (name, surname, DOB, phone, address, email, photo, password, user_type)";
@@ -191,6 +192,21 @@ function changePassword($user_id, $pwd) {
         }
     }
     return FALSE;
+}
+
+function deleteUserById($id) {
+    $sql = "DELETE FROM user WHERE id = :id AND user_type <> '" . ADMIN_TYPE . "'";
+    error_log(print_r($sql, TRUE));
+    $params = array();
+    $params[0] = array("id", $id, "int");
+    $conn = getConnection();
+    
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return True;
+        }
+    }
+    return False;
 }
 
 ?>
