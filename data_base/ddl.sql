@@ -10,7 +10,7 @@ DOB DATE,
 phone INT(20), 
 address VARCHAR(100), 
 email VARCHAR(50) UNIQUE NOT NULL, 
-photo VARCHAR(50), 
+photo VARCHAR(300), 
 password VARCHAR(32) NOT NULL,
 token VARCHAR(32),
 user_type VARCHAR(14) NOT NULL CHECK (user_type IN ('admin', 'member')),
@@ -21,7 +21,7 @@ CREATE TABLE activity(
 id INT NOT NULL AUTO_INCREMENT,
 name VARCHAR(100) UNIQUE NOT NULL,
 description MEDIUMTEXT,
-photo VARCHAR(50), 
+photo VARCHAR(300), 
 PRIMARY KEY (id)
 );
 
