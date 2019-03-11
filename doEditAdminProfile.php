@@ -5,8 +5,8 @@ require_once ("./controllers/utils.php");
 require_once("./settings/constants.php");
 
 $usr = getLoggedUser();
-$name = ucfirst(trim($_POST["name"]));
-$surname = ucfirst(trim($_POST["surname"]));
+$name = ucfirst(strtolower(trim($_POST["name"])));
+$surname = ucfirst(strtolower(trim($_POST["surname"])));
 $email = strtolower(trim($_POST["email"]));
 $phone = trim($_POST["phone"]);
 $dob = trim($_POST["dob"]);
