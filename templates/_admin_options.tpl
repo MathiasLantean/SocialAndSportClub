@@ -17,7 +17,7 @@
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <a class="collapse-item" href="createUser.php">Add</a>
-      <a class="collapse-item" href="listUser.php">List</a>
+      <a class="collapse-item" href="listMembers.php">List</a>
     </div>
   </div>
 </li>

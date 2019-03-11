@@ -9,6 +9,7 @@ $id = isset($_GET["id"]) ? (int)$_GET["id"] : Null;
 
 if (isset($usr) && $usr["user_type"] == ADMIN_TYPE && !empty($id)){
     deleteUserById($id);
+    http_response_code(200);
 }else{
     header("location: ./error404.php");
 }

@@ -2,6 +2,18 @@
 
 require_once("utils.php");
 
+function getAllActivities(){
+    $sql = "SELECT * FROM activity";
+    $conn = getConnection();
+    
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return $conn->restantesRegistros();
+        }
+    }
+    return Null;
+}
+
 function getCurrentActivities($user_id){
     $sql = "SELECT * FROM activity a, enroll e WHERE e.user = :user AND e.activity = a.id";
     $params = array();
@@ -13,7 +25,7 @@ function getCurrentActivities($user_id){
             return $conn->restantesRegistros();
         }
     }
-    return null;
+    return Null;
 }
 
 function getAvailableActivities($user_id){
@@ -27,7 +39,7 @@ function getAvailableActivities($user_id){
             return $conn->restantesRegistros();
         }
     }
-    return null;
+    return Null;
 }
 
 function leaveActivity($user_id, $activity_id){

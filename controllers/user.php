@@ -51,6 +51,48 @@ function updateUser($userId, $data){
         return True;
 }
 
+function getMemberCount($activity){
+    $params = array();
+    if(empty($activity)){
+        $sql = "SELECT count(*) total FROM user WHERE user_type <> '". ADMIN_TYPE . "'";
+    }else{
+        $sql = "SELECT count(*) total FROM user u, enroll e WHERE u.id = e.user";
+        $sql .= " AND e.activity = :filter AND u.user_type <> '". ADMIN_TYPE . "'";
+        $params[0] = array("filter", $activity,"int");
+    }
+    
+    $ret = 0;
+    $conn = getConnection();
+    if($conn && $conn->consulta($sql, $params)){
+        $result = $conn->siguienteRegistro();
+        $ret = $result["total"];
+    }
+    return $ret;
+}
+
+function getMemberList($activity, $start){
+    $params = array();
+    if(empty($activity)){
+        $sql = "SELECT * FROM user WHERE user_type <> '". ADMIN_TYPE . "'";
+    }else{
+        $sql = "SELECT * FROM user u, enroll e WHERE u.id = e.user";
+        $sql .= " AND e.activity = :filter AND u.user_type <> '". ADMIN_TYPE . "'";
+        $params[0] = array("filter", $activity,"int");
+    }
+     $sql .= " LIMIT " . $start . "," . PAGINATION;
+    
+    $ret = Array();
+    $conn = getConnection();
+    if($conn && $conn->consulta($sql, $params)){
+        $ret = $conn->restantesRegistros();
+        foreach ($ret as &$elem) {
+           unset($elem['password']);
+           unset($elem['token']);
+        }
+    }
+    return $ret; 
+}
+
 function getUser($email) {
     $sql = "SELECT * FROM user WHERE email = :email";
     $params = array();
