@@ -15,7 +15,7 @@ $address = trim($_POST["address"]);
 $photo = isset($_FILES["photo"]) ? $_FILES["photo"] : Null;
 $validEmail = True;
 
-if (isset($usr) && $usr["user_type"] == ADMIN_TYPE){
+if (!empty($usr) && $usr["user_type"] == ADMIN_TYPE){
     $dbUser = getUserById($id);
     error_log(print_r($dbUser, TRUE));
     if (!empty($dbUser) && $dbUser["user_type"] != ADMIN_TYPE){

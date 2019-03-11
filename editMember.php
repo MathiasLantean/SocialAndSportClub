@@ -14,10 +14,10 @@ if (isset($usr) && $usr["user_type"] == ADMIN_TYPE && !empty($id)){
         $miSmarty->assign("user", $userToEdit);
         $miSmarty->display("edit_member.tpl");
     }else{
-        $miSmarty->display("error404.tpl");
+        header("location: ./error404.php");
     }
 }else{
-    $miSmarty->display("error404.tpl");
+    header("location: ./error404.php");
 }
 unset($_SESSION["status"]);
 unset($_SESSION["message"]);

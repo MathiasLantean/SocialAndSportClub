@@ -9,7 +9,7 @@ $pwd = trim($_POST["pwd"]);
 $pwd_confirm = trim($_POST["confirmPwd"]);
 $pwd_current = trim($_POST["currentPwd"]);
 
-if (isset($usr)){
+if (!empty($usr)){
     if(!isCorrectPassword($usr["email"], $pwd_current)){
         $_SESSION["message"] = "Wrong password, try again.";
         $_SESSION["status"] = False;

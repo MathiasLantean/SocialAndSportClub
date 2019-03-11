@@ -9,9 +9,7 @@ error_log(print_r($post_pwd, TRUE));
 error_log(print_r($post_remember, TRUE));
 
 if (!empty($post_user) && !empty($post_pwd)){
-    $user = login($post_user, $post_pwd, $post_remember) ;
-    error_log(print_r("doLogin user:", TRUE));
-    error_log(print_r($user, TRUE));
+    $user = login($post_user, $post_pwd, $post_remember);
     if ($user != NULL) {
         header("location:./home.php");
     }else{

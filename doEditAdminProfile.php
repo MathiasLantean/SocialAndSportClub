@@ -14,7 +14,7 @@ $address = trim($_POST["address"]);
 $photo = isset($_FILES["photo"]) ? $_FILES["photo"] : Null;
 $validEmail = True;
 
-if (isset($usr) && $usr["user_type"] == ADMIN_TYPE){
+if (!empty($usr) && $usr["user_type"] == ADMIN_TYPE){
     if(!($name && $surname && $email && $phone && $dob && $address)){
         $_SESSION["message"] = "You must fill all the fields.";
         $_SESSION["status_update"] = False;

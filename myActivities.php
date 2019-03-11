@@ -6,13 +6,12 @@ require_once ("./controllers/activity.php");
 
 $miSmarty = createSmartyTemplate();
 $usr = getLoggedUser();
-if (isset($usr)){
+if (!empty($usr) && $usr["user_type"] == MEMBER_TYPE){
     $myActivities = getCurrentActivities($usr["id"]);
     $miSmarty->assign("activities", $myActivities);
-    error_log(print_r( $myActivities, TRUE));
     $miSmarty->display("current_activities.tpl");
 }else{
-    $miSmarty->display("error404.tpl");
+    header("location: ./error404.php");
 }
 
 ?>

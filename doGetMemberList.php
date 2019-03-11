@@ -10,7 +10,7 @@ $start = isset($_GET["start"]) ? (int)$_GET["start"] : 0;
 $start = $start < 0 ? 0 : $start;
 $draw = isset($_GET["draw"]) ? (int)$_GET["draw"] : 0;
 
-if (isset($usr) && $usr["user_type"] == ADMIN_TYPE){
+if (!empty($usr) && $usr["user_type"] == ADMIN_TYPE){
     $memberCount = getMemberCount($activity);
     $result = getMemberList($activity, $start);
 

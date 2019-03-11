@@ -8,7 +8,7 @@ require_once ("./controllers/activity.php");
 $usr = getLoggedUser();
 $activityId = (int)$_POST["activityId"];
 
-if (isset($usr) && isset($activityId)){
+if (isset($usr) && $usr["user_type"] == MEMBER_TYPE && isset($activityId)){
     if (enrollActivity((int)$usr["id"], $activityId)){
         header("location: ./myAvailableActivities.php");
     }else{

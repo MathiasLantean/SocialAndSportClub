@@ -8,9 +8,8 @@ require_once ("./controllers/activity.php");
 $usr = getLoggedUser();
 $activityId = (int)$_POST["activityId"];
 
-error_log(print_r($activityId, TRUE));
 
-if (isset($usr) && isset($activityId)){
+if (!empty($usr) && $usr["user_type"] == MEMBER_TYPE && isset($activityId)){
     if (leaveActivity((int)$usr["id"], $activityId)){
         header("location: ./myActivities.php");
     }else{

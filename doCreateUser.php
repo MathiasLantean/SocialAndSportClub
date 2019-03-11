@@ -18,7 +18,7 @@ $isAdmin = (int)($_POST["isAdmin"]);
 $photo = isset($_FILES["photo"]) ? $_FILES["photo"] : Null;
 
 
-if (isset($usr) && $usr["user_type"] == "admin"){
+if (!empty($usr) && $usr["user_type"] == ADMIN_TYPE){
     if($pwd && $pwd_confirm && strlen($pwd) >= PASSWORD_LENGTH){
         if($pwd == $pwd_confirm){
             if(!($name && $surname && $email && $phone && $dob && $address)){

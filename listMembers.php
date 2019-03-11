@@ -7,12 +7,12 @@ require_once ("./controllers/activity.php");
 $miSmarty = createSmartyTemplate();
 $usr = getLoggedUser();
 
-if (isset($usr) && $usr["user_type"] == ADMIN_TYPE){
+if (!empty($usr) && $usr["user_type"] == ADMIN_TYPE){
     $activities = getAllActivities();
     $miSmarty->assign("activities", $activities);
     $miSmarty->display("members_list.tpl");
 }else{
-    $miSmarty->display("error404.tpl");
+    header("location: ./error404.php");
 }
 
 ?>
