@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
               <div class="text-center">
-                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{$item.photo}" alt="{$item.name}_photo">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem; height: 14rem;" src="{$item.photo}" alt="{$item.name}_photo">
               </div>
               <p>{$item.description}</p>
               <form action="doLeaveActivity.php" method="post">
