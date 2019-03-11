@@ -64,6 +64,20 @@ function getUser($email) {
     return null;
 }
 
+function getUserById($id) {
+    $sql = "SELECT * FROM user WHERE id = :id";
+    $params = array();
+    $params[0] = array("id", $id, "int");
+    $conn = getConnection();
+    
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return $conn->siguienteRegistro();
+        }
+    }
+    return null;
+}
+
 function getUserByToken($token) {
     $sql = "SELECT * FROM user WHERE token = :token";
     $params = array();

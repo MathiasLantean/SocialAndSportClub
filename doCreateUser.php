@@ -34,8 +34,8 @@ if (isset($usr) && $usr["user_type"] == "admin"){
                 }
                 $photoName = savePhoto($photo);
                 $upperMd5Pwd = strtoupper(md5($pwd));
-                $name = ucfirst($name);
-                $surname = ucfirst($surname);
+                $name = ucfirst(strtolower($name));
+                $surname = ucfirst(strtolower($surname));
                 $email = strtolower($email);
                 $wasCreated = createUser($name, $surname, $email, $upperMd5Pwd, $phone, $dob, $address, $photoName, $type);
                 if($wasCreated){
