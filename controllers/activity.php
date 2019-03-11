@@ -49,9 +49,6 @@ function leaveActivity($user_id, $activity_id){
     $params[1] = array("activity", $activity_id, "int");
     $conn = getConnection();
     
-    error_log(print_r( $sql, TRUE));
-    error_log(print_r( $params[0], TRUE));
-    error_log(print_r( $params[1], TRUE));
     if ($conn){
         if($conn->consulta($sql, $params)){
             return True;
@@ -67,9 +64,6 @@ function enrollActivity($user_id, $activity_id){
     $params[1] = array("activity", $activity_id, "int");
     $conn = getConnection();
     
-    error_log(print_r( $sql, TRUE));
-    error_log(print_r( $params[0], TRUE));
-    error_log(print_r( $params[1], TRUE));
     if ($conn){
         if($conn->consulta($sql, $params)){
             return True;

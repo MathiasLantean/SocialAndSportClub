@@ -17,7 +17,6 @@ $validEmail = True;
 
 if (!empty($usr) && $usr["user_type"] == ADMIN_TYPE){
     $dbUser = getUserById($id);
-    error_log(print_r($dbUser, TRUE));
     if (!empty($dbUser) && $dbUser["user_type"] != ADMIN_TYPE){
         if(!($name && $surname && $email && $phone && $dob && $address)){
             $_SESSION["message"] = "You must fill all the fields.";
@@ -43,9 +42,6 @@ if (!empty($usr) && $usr["user_type"] == ADMIN_TYPE){
                 $oldPhotoName = $dbUser["photo"];
                 $photoName = savePhoto($photo);
                 $data["photo"] = $photoName;
-                error_log(print_r("ACA ESTAN LAS FOTOS!!!!", TRUE));
-                error_log(print_r($oldPhotoName, TRUE));
-                error_log(print_r($photoName, TRUE));
                 if ($oldPhotoName != STATIC_DIR . "default.jpeg"){
                     unlink($oldPhotoName);
                 }

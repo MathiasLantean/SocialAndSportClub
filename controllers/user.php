@@ -174,8 +174,6 @@ function login($user, $pwd, $remember) {
     session_start();
     $dbUser = getUser($user);
     $upperMd5Pwd = strtoupper(md5($pwd));
-    error_log(print_r("DB user:", TRUE));
-    error_log(print_r( $dbUser, TRUE));
     if ($dbUser && ($dbUser['password'] == $upperMd5Pwd)){
         unset($dbUser['password']);
         if ($remember == 1) {
@@ -190,7 +188,6 @@ function login($user, $pwd, $remember) {
         return $dbUser;
     }
     $_SESSION["message"] = "Wrong username or password.";
-    error_log(print_r($_SESSION["message"], TRUE));
     return null;
 }
 
@@ -238,7 +235,6 @@ function changePassword($user_id, $pwd) {
 
 function deleteUserById($id) {
     $sql = "DELETE FROM user WHERE id = :id AND user_type <> '" . ADMIN_TYPE . "'";
-    error_log(print_r($sql, TRUE));
     $params = array();
     $params[0] = array("id", $id, "int");
     $conn = getConnection();
