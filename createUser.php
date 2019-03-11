@@ -8,8 +8,6 @@ require_once ("./controllers/user.php");
 $miSmarty = createSmartyTemplate();
 $usr = getLoggedUser();
 
-$miSmarty = createSmartyTemplate();
-$usr = getLoggedUser();
 if (isset($usr) && $usr["user_type"] == "admin"){
     $miSmarty->display("create_user.tpl");
 }else{
@@ -19,5 +17,3 @@ unset($_SESSION["status"]);
 unset($_SESSION["message"]);
 
 ?>
-
-
