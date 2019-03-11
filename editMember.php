@@ -6,9 +6,9 @@ require_once ("./controllers/activity.php");
 
 $miSmarty = createSmartyTemplate();
 $usr = getLoggedUser();
-$id = (int)$_GET["id"];
+$id = isset($_GET["id"]) ? (int)$_GET["id"] : Null;
 
-if (isset($usr) && $usr["user_type"] == ADMIN_TYPE){
+if (isset($usr) && $usr["user_type"] == ADMIN_TYPE && !empty($id)){
     $userToEdit = getUserById($id);
     if (!empty($userToEdit) && $userToEdit["user_type"] != ADMIN_TYPE){
         $miSmarty->assign("user", $userToEdit);
