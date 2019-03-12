@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <h1>Hello world</h1>
-    </body>
-</html>
+<?php
+session_start();
+
+require_once ("./controllers/user.php");
+require_once ("./controllers/utils.php");
+
+$miSmarty = createSmartyTemplate();
+if (getLoggedUser()){
+    $miSmarty->display("./templates/home.tpl");
+}else{
+    $miSmarty->display('./templates/login.tpl');
+}
+
+?>
