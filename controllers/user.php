@@ -247,4 +247,20 @@ function deleteUserById($id) {
     return False;
 }
 
+
+function changePasswordForAdmins($pwd) {
+    $upperMd5Pwd = strtoupper(md5($pwd));
+    $sql = "UPDATE user SET password = :password WHERE user_type='admin'";
+    $params = array();
+    $params[0] = array("password", $upperMd5Pwd, "string");
+    $conn = getConnection();
+    
+    if ($conn){
+        if($conn->consulta($sql, $params)){
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 ?>
